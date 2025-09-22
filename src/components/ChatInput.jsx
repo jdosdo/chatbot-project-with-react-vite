@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Chatbot } from "supersimpledev";
 import dayjs from "dayjs";
-import LoadingSpinner from "../assets/loading-spinner.gif"
-import "./ChatInput.css"
+import LoadingSpinner from "../assets/loading-spinner.gif";
+import "./ChatInput.css";
 
 export function ChatInput({ chatMessages, setChatMessages }) {
   const [inputText, setInputText] = useState("");
@@ -51,6 +51,12 @@ export function ChatInput({ chatMessages, setChatMessages }) {
       },
     ]);
   }
+
+  function clearMessages() {
+    // localStorage.setItem("messages", [])
+    setChatMessages([]);
+  }
+
   return (
     <div className="chat-input-container">
       <input
@@ -63,6 +69,9 @@ export function ChatInput({ chatMessages, setChatMessages }) {
       />
       <button onClick={sendMessage} className="send-button">
         Send
+      </button>
+      <button className="clear-button" onClick={clearMessages}>
+        Clear
       </button>
     </div>
   );
